@@ -1,0 +1,145 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net7.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <UseWPF>true</UseWPF>
+        <RootNamespace>NavigationTutorial</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Page Update="MVVM\View\MainWindow.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
+      <PackageReference Include="Extended.Wpf.Toolkit" Version="4.5.1" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.14" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.14">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+      <PackageReference Include="MVVMEssentials" Version="1.0.0" />
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.11" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Resource\group-users-dark.png" />
+      <Resource Include="Resource\group-users-dark.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resource\group-users-white.png" />
+      <Resource Include="Resource\group-users-white.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resource\presentation.png" />
+      <Resource Include="Resource\presentation.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resource\project-management-dark.png" />
+      <Resource Include="Resource\project-management-dark.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resource\project-management-white.png" />
+      <Resource Include="Resource\project-management-white.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resource\startup.png" />
+      <Resource Include="Resource\startup.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resource\task-list-dark.png" />
+      <Resource Include="Resource\task-list-dark.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resource\task-list-white.png" />
+      <Resource Include="Resource\task-list-white.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resource\coins.png" />
+      <Resource Include="Resource\coins.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resource\clipboard.png" />
+      <Resource Include="Resource\clipboard.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resource\man.png" />
+      <Resource Include="Resource\man.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resource\businessman.png" />
+      <Resource Include="Resource\businessman.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resource\clock.png" />
+      <Resource Include="Resource\clock.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resource\calendar.png" />
+      <Resource Include="Resource\calendar.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resource\interface.png" />
+      <Resource Include="Resource\interface.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resource\logout-dark.png" />
+      <Resource Include="Resource\logout-dark.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resource\logout-white.png" />
+      <Resource Include="Resource\logout-white.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resource\facebook.png" />
+      <Resource Include="Resource\facebook.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resource\instagram.png" />
+      <Resource Include="Resource\instagram.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resource\twitter.png" />
+      <Resource Include="Resource\twitter.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resource\youtube.png" />
+      <Resource Include="Resource\youtube.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resource\man-team-member.png" />
+      <Resource Include="Resource\man-team-member.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resource\search.png" />
+      <None Remove="Resource\member-phone.png" />
+      <Resource Include="Resource\member-phone.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resource\member-email.png" />
+      <Resource Include="Resource\member-email.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resource\user.png" />
+      <Resource Include="Resource\user.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resource\find.png" />
+      <None Remove="Resource\member.png" />
+      <Resource Include="Resource\member.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resource\blueprint.png" />
+      <Resource Include="Resource\blueprint.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+    </ItemGroup>
+
+</Project>

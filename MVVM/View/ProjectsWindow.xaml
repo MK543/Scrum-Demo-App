@@ -1,0 +1,206 @@
+﻿<Window x:Class="NavigationTutorial.MVVM.View.ProjectsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:NavigationTutorial.MVVM.View"
+        mc:Ignorable="d"
+        Title="ProjectsWindow" 
+       Height="1080" Width="1920"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True">
+    <Grid MouseLeftButtonDown="DragWindow">
+        <!-- <Grid.ColumnDefinitions> -->
+        <!--     <ColumnDefinition Width="Auto"/> -->
+        <!--     <ColumnDefinition Width="*"/> -->
+        <!-- </Grid.ColumnDefinitions> -->
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" ></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0">
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <!-- Application Name -->
+            <Border Grid.Column="0" Background="#161A30" CornerRadius="50,0,0,0" Width="200">
+                <StackPanel Orientation="Horizontal">
+                    <Image Margin="20,0,0,0" Height="30" Width="30" Source="/Resource/startup.png" >
+                    
+                    </Image>
+                    <TextBlock Text="Scrum App" 
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Foreground="White"
+                               Margin="10,10,0,10"
+                               FontSize="22"
+                               FontWeight="Bold"
+                               FontFamily="Georgia">
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+            
+            <!-- Top Bar -->
+            <Border Grid.Column="1" Background="#112D4E" Height="50" CornerRadius="0,50,0,0">
+                <StackPanel>
+                    <!-- Top bar items go here -->
+                    <TextBlock Text="Project Name" 
+                               x:Name="ProjectNameTextBlock"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               Foreground="White"
+                               Grid.Column="1"
+                               Margin="20,10,0,0"
+                               FontSize="22">
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+            
+        </Grid>
+        
+        <Grid Grid.Row="1">
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <!-- Navigation Bar -->
+            <Border Grid.Column="0" Background="#F9F7F7"  CornerRadius="0,0,0,50">
+                <StackPanel>
+                    <!-- Navigation items go here -->
+                   
+                    
+                    <RadioButton FontSize="14" Height="100" FontWeight="DemiBold" Content="Projects" Command="{Binding NavigateToProjectsView}" IsChecked="True">
+                        <RadioButton.Style>
+                            <Style TargetType="RadioButton">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="RadioButton">
+                                            <Border x:Name="Border">
+                                                <StackPanel x:Name="ProjectRadioButtonStackPanel" Orientation="Vertical" VerticalAlignment="Center">
+                                                    <Image x:Name="IconImageDark" Source="/ScrumAppForm;component/Resource/project-management-dark.png" Width="40" Height="40" Margin="0,0,5,0"/>
+                                                    <Image x:Name="IconImageWhite" Source="/ScrumAppForm;component/Resource/project-management-white.png" Width="40" Height="40" Margin="0,0,5,0" Visibility="Collapsed"/>
+                                                    <TextBlock x:Name="ButtonText" TextAlignment="Center" Text="{TemplateBinding Content}" Foreground="#161A30"/>
+                                                </StackPanel>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsChecked" Value="True">
+                                                    <Setter TargetName="ButtonText" Property="Foreground" Value="White"/>
+                                                    <Setter TargetName="Border" Property="Background" Value="#161A30"/>
+                                                    <Setter TargetName="IconImageDark" Property="Visibility" Value="Collapsed"/>
+                                                    <Setter TargetName="IconImageWhite" Property="Visibility" Value="Visible"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </RadioButton.Style>
+                    </RadioButton>
+                    
+                    <RadioButton FontSize="14" Height="100" FontWeight="DemiBold" Content="Tasks" Command="{Binding NavigateToTaskView}">
+                        <RadioButton.Style>
+                            <Style TargetType="RadioButton">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="RadioButton">
+                                            <Border x:Name="Border">
+                                                <StackPanel x:Name="ProjectRadioButtonStackPanel" Orientation="Vertical" VerticalAlignment="Center">
+                                                    <Image x:Name="IconImageDark" Source="/ScrumAppForm;component/Resource/task-list-dark.png" Width="40" Height="40" Margin="0,0,5,0"/>
+                                                    <Image x:Name="IconImageWhite" Source="/ScrumAppForm;component/Resource/task-list-white.png" Width="40" Height="40" Margin="0,0,5,0" Visibility="Collapsed"/>
+                                                    <TextBlock x:Name="ButtonText" TextAlignment="Center" Text="{TemplateBinding Content}" Foreground="#161A30"/>
+                                                </StackPanel>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsChecked" Value="True">
+                                                    <Setter TargetName="ButtonText" Property="Foreground" Value="White"/>
+                                                    <Setter TargetName="Border" Property="Background" Value="#161A30"/>
+                                                    <Setter TargetName="IconImageDark" Property="Visibility" Value="Collapsed"/>
+                                                    <Setter TargetName="IconImageWhite" Property="Visibility" Value="Visible"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </RadioButton.Style>
+                    </RadioButton>
+                    
+                    <RadioButton FontSize="14" Height="100" FontWeight="DemiBold" Content="Members" Command="{Binding NavigateToMembersView}">
+                        <RadioButton.Style>
+                            <Style TargetType="RadioButton">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="RadioButton">
+                                            <Border x:Name="Border">
+                                                <StackPanel x:Name="ProjectRadioButtonStackPanel" Orientation="Vertical" VerticalAlignment="Center">
+                                                    <Image x:Name="IconImageDark" Source="/ScrumAppForm;component/Resource/group-users-dark.png" Width="40" Height="40" Margin="0,0,5,0"/>
+                                                    <Image x:Name="IconImageWhite" Source="/ScrumAppForm;component/Resource/group-users-white.png" Width="40" Height="40" Margin="0,0,5,0" Visibility="Collapsed"/>
+                                                    <TextBlock x:Name="ButtonText" TextAlignment="Center" Text="{TemplateBinding Content}" Foreground="#161A30"/>
+                                                </StackPanel>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsChecked" Value="True">
+                                                    <Setter TargetName="ButtonText" Property="Foreground" Value="White"/>
+                                                    <Setter TargetName="Border" Property="Background" Value="#161A30"/>
+                                                    <Setter TargetName="IconImageDark" Property="Visibility" Value="Collapsed"/>
+                                                    <Setter TargetName="IconImageWhite" Property="Visibility" Value="Visible"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </RadioButton.Style>
+                    </RadioButton>
+                    
+                    <RadioButton FontSize="14" Height="100" FontWeight="DemiBold" Content="Log out" Command="{Binding LogOutCommand}">
+                        <RadioButton.Style>
+                            <Style TargetType="RadioButton">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="RadioButton">
+                                            <Border x:Name="Border">
+                                                <StackPanel x:Name="ProjectRadioButtonStackPanel" Orientation="Vertical" VerticalAlignment="Center">
+                                                    <Image x:Name="IconImageDark" Source="/ScrumAppForm;component/Resource/logout-dark.png" Width="40" Height="40" Margin="0,0,5,0"/>
+                                                    <Image x:Name="IconImageWhite" Source="/ScrumAppForm;component/Resource/logout-white.png" Width="40" Height="40" Margin="0,0,5,0" Visibility="Collapsed"/>
+                                                    <TextBlock x:Name="ButtonText" TextAlignment="Center" Text="{TemplateBinding Content}" Foreground="#161A30"/>
+                                                </StackPanel>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsChecked" Value="True">
+                                                    <Setter TargetName="ButtonText" Property="Foreground" Value="White"/>
+                                                    <Setter TargetName="Border" Property="Background" Value="#161A30"/>
+                                                    <Setter TargetName="IconImageDark" Property="Visibility" Value="Collapsed"/>
+                                                    <Setter TargetName="IconImageWhite" Property="Visibility" Value="Visible"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </RadioButton.Style>
+                    </RadioButton>
+                    
+                
+                </StackPanel>
+            </Border>
+            
+            <!-- Main Area -->
+            <Border Grid.Column="1" Background="#DBE2EF" CornerRadius="0,0,50,0">
+                <ContentControl Content="{Binding Navigation.CurrentView}">
+                    
+                </ContentControl>
+            </Border>
+            
+        </Grid>
+    </Grid>
+</Window>

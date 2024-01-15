@@ -1,0 +1,189 @@
+﻿<UserControl x:Class="NavigationTutorial.MVVM.View.ManageProjectsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:NavigationTutorial.MVVM.View"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             mc:Ignorable="d"
+             d:DesignHeight="1000" d:DesignWidth="1800" Background="#DBE2EF">
+    <Grid>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <!-- Add Project section -->
+        <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Add Project" Margin="0,0,0,20" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <StackPanel>
+                <Label Content="Name:" FontSize="14"/>
+                <TextBox Width="200" Margin="0,0,0,0" Text="{Binding Path=CreateProject.ProjectName, Mode=TwoWay}" Name="AddProjectNameTextBox"/>
+                <Label Width="200" Margin="0,5,0,0" FontWeight="Bold" Content="{Binding Path= CreateProject.InvalidProjectNameLabel, Mode=TwoWay}" Foreground="Red" HorizontalAlignment="Center" Name="InvalidProjectNameLabel"/>
+            </StackPanel>
+            
+            <StackPanel>
+                <Label Content="Description:" FontSize="14"/>
+                <TextBox Width="200" Margin="0,0,0,0" Text="{Binding Path=CreateProject.ProjectDesc, Mode=TwoWay}" Name="AddProjectDescTextBox"/>
+                <Label Width="200" Margin="0,5,0,0" FontWeight="Bold" Content="{Binding Path= CreateProject.InvalidProjectDescLabel, Mode=TwoWay}" Foreground="Red" HorizontalAlignment="Center" Name="InvalidProjectDescLabel"/>
+            </StackPanel>
+
+            <StackPanel>
+                <Label Content="Finish date:" FontSize="14"/>
+                <xctk:DateTimePicker x:Name="dateTimePicker" 
+                                     Format="Custom"
+                                     FormatString="dd/MM/yyyy HH:mm:ss"
+                                     Value="{Binding CreateProject.FinishDate}" />
+                <Label Width="200" Margin="0,5,0,0" FontWeight="Bold" Content="{Binding Path= CreateProject.InvalidDateLabel, Mode=TwoWay}" Foreground="Red" HorizontalAlignment="Center" Name="InvalidCreateProjectDateLabel"/>
+            </StackPanel>
+            
+
+            
+            
+            <Button Width="200" Content="Add Project" Command="{Binding AddProjectCommand}"></Button>
+        </StackPanel>
+        
+        
+        <!-- Update Project section -->
+         <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+             
+             <TextBlock Text="Update Project" Margin="0,0,0,20" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
+             
+             <StackPanel>
+                 <Label Content="Project to update:" FontSize="14"/>
+                 <ComboBox x:Name="UpdateChoseProjectComboBox"
+                           IsEditable="True"
+                           StaysOpenOnEdit="True"
+                           IsTextSearchEnabled="True"
+                           TextSearch.TextPath=""
+                           ItemsSource="{Binding UpdateProject.Projects}"
+                           SelectedItem="{Binding UpdateProject.SelectedProject, Mode=TwoWay}"
+                           Width="200">
+                     <ComboBox.ItemTemplate>
+                         <DataTemplate>
+                             <TextBlock Text="{Binding}" />
+                         </DataTemplate>
+                     </ComboBox.ItemTemplate>
+                 </ComboBox>
+                 <Label Width="200" Margin="0,5,0,0" FontWeight="Bold" Content="{Binding Path= UpdateProject.InvalidProjectSelectLabel, Mode=TwoWay}" Foreground="Red" HorizontalAlignment="Center" Name="InvalidProjectSelectLabel"/>
+             </StackPanel>
+             
+            <StackPanel>
+                <Label Content="Name:" FontSize="14"/>
+                <TextBox Width="200" Margin="0,0,0,0" Text="{Binding Path=UpdateProject.ProjectName, Mode=TwoWay}" Name="UpdateProjectNameTextBox"/>
+                <Label Width="200" Margin="0,5,0,0" FontWeight="Bold" Content="{Binding Path= UpdateProject.InvalidProjectNameLabel, Mode=TwoWay}" Foreground="Red" HorizontalAlignment="Center" Name="InvalidUpdateProjectNameLabel"/>
+            </StackPanel>
+            
+            <StackPanel>
+                <Label Content="Description:" FontSize="14"/>
+                <TextBox Width="200" Margin="0,0,0,0" Text="{Binding Path=UpdateProject.ProjectDesc, Mode=TwoWay}" Name="UpdateProjectDescTextBox"/>
+                <Label Width="200" Margin="0,5,0,0" FontWeight="Bold" Content="{Binding Path= UpdateProject.InvalidProjectDescLabel, Mode=TwoWay}" Foreground="Red" HorizontalAlignment="Center" Name="InvalidUpdateProjectDescLabel"/>
+            </StackPanel>
+             
+             <TextBlock Width="200" Margin="0,0,0,0" Text="{Binding Path=UpdateProject.ProjectOldDate, Mode=TwoWay}" Name="UpdateProjectOldDateTextBlock"/>
+             
+             <StackPanel>
+                 <Label Content="Finish date:" FontSize="14"/>
+                 <xctk:DateTimePicker x:Name="dateTimeUpdatePicker" 
+                                      Format="Custom"
+                                      FormatString="dd/MM/yyyy HH:mm:ss"
+                                      Value="{Binding UpdateProject.FinishDate}" />
+                 <Label Width="200" Margin="0,5,0,0" FontWeight="Bold" Content="{Binding Path= UpdateProject.InvalidProjectDateLabel, Mode=TwoWay}" Foreground="Red" HorizontalAlignment="Center" Name="InvalidUpdateTaskSelectLabel"/>
+             </StackPanel>
+             
+            
+            <Button Width="200" Content="Update Project" Command="{Binding UpdateProjectCommand}"></Button>
+        </StackPanel>
+        
+        <!-- Remove Project section -->
+         <StackPanel Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+             
+             <TextBlock Text="Remove Project" Margin="0,0,0,20" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
+             
+             <StackPanel>
+                 <Label Content="Project to remove:" FontSize="14"/>
+                 <ComboBox x:Name="RemoveChoseProjectComboBox"
+                           IsEditable="True"
+                           StaysOpenOnEdit="True"
+                           IsTextSearchEnabled="False"
+                           TextSearch.TextPath=""
+                           ItemsSource="{Binding DeleteProject.Projects}"
+                           SelectedItem="{Binding DeleteProject.SelectedProject}"
+                           Text="{Binding DeleteProject.SearchProject, UpdateSourceTrigger=PropertyChanged}"
+                           Width="200">
+                     <ComboBox.ItemTemplate>
+                         <DataTemplate>
+                             <TextBlock Text="{Binding}" />
+                         </DataTemplate>
+                     </ComboBox.ItemTemplate>
+                 </ComboBox>
+                 <Label Width="200" Margin="0,5,0,0" FontWeight="Bold" Content="{Binding Path= DeleteProject.InvalidProjectSelectLabel, Mode=TwoWay}" Foreground="Red" HorizontalAlignment="Center" Name="InvalidDeleteProjectLabel"/>
+             </StackPanel>
+             
+             <Button Width="200" Content="Remove Project" Command="{Binding RemoveProjectCommand}"></Button>
+        </StackPanel>
+        
+        <!-- In Project Users section -->
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <Grid Margin="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="200" />
+                </Grid.RowDefinitions>
+
+                <TextBlock
+                    Grid.Row="0"
+                    FontSize="24"
+                    Text="InProject" />
+
+                <local:UserListingView
+                    Grid.Row="1"
+                    Margin="0 10 0 0"
+                    DataContext="{Binding InProjectUserListingViewModel}"
+                    IncomingUser="{Binding IncomingUserViewModel}"
+                    InsertedUser="{Binding InsertedUserViewModel}"
+                    RemovedUser="{Binding RemovedUserViewModel}"
+                    TargetUser="{Binding TargetUserViewModel}"
+                    UserDropCommand="{Binding UserReceivedCommand}"
+                    UserInsertedCommand="{Binding UserInsertedCommand}"
+                    UserRemovedCommand="{Binding UserRemovedCommand}" />
+            </Grid>
+        </StackPanel>
+        <!-- Not In Project Users section -->
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <Grid Margin="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="200" />
+                </Grid.RowDefinitions>
+
+                <TextBlock
+                    Grid.Row="0"
+                    FontSize="24"
+                    Text="NotInProject" />
+
+                <local:UserListingView
+                    Grid.Row="1"
+                    Margin="0 10 0 0"
+                    DataContext="{Binding NotInProjectUserListingViewModel}"
+                    IncomingUser="{Binding IncomingUserViewModel}"
+                    InsertedUser="{Binding InsertedUserViewModel}"
+                    RemovedUser="{Binding RemovedUserViewModel}"
+                    TargetUser="{Binding TargetUserViewModel}"
+                    UserDropCommand="{Binding UserReceivedCommand}"
+                    UserInsertedCommand="{Binding UserInsertedCommand}"
+                    UserRemovedCommand="{Binding UserRemovedCommand}" />
+            </Grid>
+        </StackPanel>
+        
+
+        
+    </Grid>
+</UserControl>

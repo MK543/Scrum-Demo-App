@@ -1,0 +1,211 @@
+﻿<UserControl x:Class="NavigationTutorial.MVVM.View.ManageTasksView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:NavigationTutorial.MVVM.View"
+             mc:Ignorable="d"
+             d:DesignHeight="1000" d:DesignWidth="1800"
+             Background="#DBE2EF">
+    <Grid>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <!-- <Grid.RowDefinitions> -->
+        <!--     <RowDefinition Height="1*"></RowDefinition> -->
+        <!--     <RowDefinition Height="5*"></RowDefinition> -->
+        <!-- </Grid.RowDefinitions> -->
+        <!-- -->
+        <!-- <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" VerticalAlignment="Center"> -->
+        <!--     <Label Content="Switch Project:" FontSize="14" HorizontalAlignment="Center"/> -->
+        <!--     <ComboBox  -->
+        <!--         Name="SwitchProjectsComboBox" -->
+        <!--         SelectedValuePath="ProjectName" -->
+        <!--         DisplayMemberPath="ProjectName" -->
+        <!--         SelectedValue="{Binding SelectedProjectName}" -->
+        <!--         ItemsSource="{Binding UserProjects}" -->
+        <!--         BorderThickness="0" -->
+        <!--         Width="200"> -->
+        <!--     </ComboBox> -->
+        <!-- </StackPanel> -->
+        
+        
+        <!-- Add Task section -->
+        <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Add Task" Margin="0,0,0,20" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <StackPanel>
+                <Label Content="Name:" FontSize="14"/>
+                <TextBox Width="200" Margin="0,0,0,0" Text="{Binding Path=CreateProjectTask.TaskName, Mode=TwoWay}" Name="AddTaskNameTextBox"/>
+                <Label Margin="0,5,0,0" Width="200" Content="{Binding Path=CreateProjectTask.InvalidTaskNameLabel, Mode=TwoWay}" FontWeight="Bold" Foreground="Red" HorizontalAlignment="Center" Name="InvalidTaskNameLabel"/>
+            </StackPanel>
+            
+            <StackPanel>
+                <Label Content="Description:" FontSize="14"/>
+                <TextBox Width="200" Margin="0,0,0,0" Text="{Binding Path=CreateProjectTask.TaskDesc, Mode=TwoWay}" Name="AddTaskDescTextBox"/>
+                <Label Margin="0,5,0,0" Width="200" Content="{Binding Path=CreateProjectTask.InvalidTaskDescLabel, Mode=TwoWay}" FontWeight="Bold" Foreground="Red" HorizontalAlignment="Center" Name="InvalidTaskDescLabel"/>
+            </StackPanel>
+            
+            <StackPanel>
+                <Label Content="Points:" FontSize="14"/>
+                <TextBox Width="200" Margin="0,0,0,0" Text="{Binding Path=CreateProjectTask.TaskPoints, Mode=TwoWay}" Name="AddTaskPointsTextBox"/>
+                <Label Margin="0,5,0,0" Width="200" Content="{Binding Path=CreateProjectTask.InvalidTaskPointsLabel, Mode=TwoWay}" FontWeight="Bold" Foreground="Red" HorizontalAlignment="Center" Name="InvalidTaskPointsLabel"/>
+            </StackPanel>
+            
+            <StackPanel>
+                <Label Content="Assign:" FontSize="14"/>
+                <ComboBox x:Name="AddSearchComboBox"
+                          IsEditable="True"
+                          StaysOpenOnEdit="True"
+                          IsTextSearchEnabled="True"
+                          TextSearch.TextPath=""
+                          ItemsSource="{Binding CreateProjectTask.Users}"
+                          SelectedItem="{Binding CreateProjectTask.SelectedUser}"
+                          Width="200">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <Label Margin="0,5,0,0" Width="200" Content="{Binding Path=CreateProjectTask.InvalidMemberLabel}" FontWeight="Bold" Foreground="Red" HorizontalAlignment="Center" Name="InvalidTaskMemberLabel"></Label>
+            </StackPanel>
+            
+            <!-- <StackPanel> -->
+            <!--     <Label Content="Assign:" FontSize="14"/> -->
+            <!--     <ComboBox x:Name="AddSearchComboBox" -->
+            <!--               IsEditable="True" -->
+            <!--               StaysOpenOnEdit="True" -->
+            <!--               IsTextSearchEnabled="False" -->
+            <!--               TextSearch.TextPath="" -->
+            <!--               ItemsSource="{Binding CreateProjectTask.UsersView}" -->
+            <!--               SelectedItem="{Binding CreateProjectTask.SelectedUser}" -->
+            <!--               Text="{Binding CreateProjectTask.SearchUser, UpdateSourceTrigger=PropertyChanged}" -->
+            <!--               Width="200"> -->
+            <!--         <ComboBox.ItemTemplate> -->
+            <!--             <DataTemplate> -->
+            <!--                 <TextBlock Text="{Binding}" /> -->
+            <!--             </DataTemplate> -->
+            <!--         </ComboBox.ItemTemplate> -->
+            <!--     </ComboBox> -->
+            <!-- </StackPanel> -->
+            <Button Margin="0,15,0,0" Width="200" Content="Add Task" Command="{Binding AddTaskCommand}"></Button>
+        </StackPanel>
+        
+        
+        <!-- Update Task section -->
+         <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+             
+             <TextBlock Text="Update Task" Margin="0,0,0,20" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
+             
+             <!-- <StackPanel> -->
+             <!--     <Label Content="Task to update:" FontSize="14"/> -->
+             <!--     <ComboBox x:Name="UpdateChoseTaskComboBox" -->
+             <!--               IsEditable="True" -->
+             <!--               StaysOpenOnEdit="True" -->
+             <!--               IsTextSearchEnabled="False" -->
+             <!--               TextSearch.TextPath="" -->
+             <!--               ItemsSource="{Binding UpdateProjectTask.Tasks}" -->
+             <!--               SelectedItem="{Binding UpdateProjectTask.SelectedTask}" -->
+             <!--               Text="{Binding UpdateProjectTask.SearchTask, UpdateSourceTrigger=PropertyChanged}" -->
+             <!--               Width="200"> -->
+             <!--         <ComboBox.ItemTemplate> -->
+             <!--             <DataTemplate> -->
+             <!--                 <TextBlock Text="{Binding}" /> -->
+             <!--             </DataTemplate> -->
+             <!--         </ComboBox.ItemTemplate> -->
+             <!--     </ComboBox> -->
+             <!-- </StackPanel> -->
+             
+             <StackPanel>
+                 <Label Content="Task to update:" FontSize="14"/>
+                 <ComboBox x:Name="UpdateChoseTaskComboBox"
+                           IsEditable="True"
+                           StaysOpenOnEdit="True"
+                           IsTextSearchEnabled="True"
+                           TextSearch.TextPath=""
+                           ItemsSource="{Binding UpdateProjectTask.Tasks}"
+                           SelectedItem="{Binding UpdateProjectTask.SelectedTask}"
+                           Width="200">
+                     <ComboBox.ItemTemplate>
+                         <DataTemplate>
+                             <TextBlock Text="{Binding}" />
+                         </DataTemplate>
+                     </ComboBox.ItemTemplate>
+                 </ComboBox>
+                 <Label Width="200" Margin="0,5,0,0" FontWeight="Bold" Content="{Binding Path= UpdateProjectTask.InvalidTaskSelectLabel, Mode=TwoWay}" Foreground="Red" HorizontalAlignment="Center" Name="InvalidUpdateTaskSelectLabel"/>
+             </StackPanel>
+             
+            <StackPanel>
+                <Label Content="Name:" FontSize="14"/>
+                <TextBox Width="200" Margin="0,0,0,0" Text="{Binding Path=UpdateProjectTask.TaskName, Mode=TwoWay}" Name="UpdateTaskNameTextBox"/>
+                <Label Width="200" Margin="0,5,0,0" FontWeight="Bold" Content="{Binding Path= UpdateProjectTask.InvalidTaskNameLabel, Mode=TwoWay}" Foreground="Red" HorizontalAlignment="Center" Name="InvalidUpdateTaskNameLabel"/>
+            </StackPanel>
+            
+            <StackPanel>
+                <Label Content="Description:" FontSize="14"/>
+                <TextBox Width="200" Margin="0,0,0,0" Text="{Binding Path=UpdateProjectTask.TaskDesc, Mode=TwoWay}" Name="UpdateTaskDescTextBox"/>
+                <Label Width="200" Margin="0,5,0,0" FontWeight="Bold" Content="{Binding Path= UpdateProjectTask.InvalidTaskDescLabel, Mode=TwoWay}" Foreground="Red" HorizontalAlignment="Center" Name="InvalidUpdateTaskDescLabel"/>
+            </StackPanel>
+            
+            <StackPanel>
+                <Label Content="Points:" FontSize="14"/>
+                <TextBox Width="200" Margin="0,0,0,0" Text="{Binding Path=UpdateProjectTask.TaskPoints, Mode=TwoWay}" Name="UpdateTaskPointsTextBox"/>
+                <Label Width="200" Margin="0,5,0,0" FontWeight="Bold" Content="{Binding Path= UpdateProjectTask.InvalidTaskPointsLabel, Mode=TwoWay}" Foreground="Red" HorizontalAlignment="Center" Name="InvalidUpdateTaskPointsLabel"/>
+            </StackPanel>
+            
+             <StackPanel>
+                 <Label Content="Assign:" FontSize="14"/>
+                 <ComboBox x:Name="UpdateAssignedComboBox"
+                           IsEditable="True"
+                           StaysOpenOnEdit="True"
+                           IsTextSearchEnabled="False"
+                           TextSearch.TextPath=""
+                           ItemsSource="{Binding UpdateProjectTask.Users}"
+                           SelectedItem="{Binding UpdateProjectTask.SelectedUser}"
+                           Text="{Binding UpdateProjectTask.SearchUser, UpdateSourceTrigger=PropertyChanged}"
+                           Width="200">
+                     <ComboBox.ItemTemplate>
+                         <DataTemplate>
+                             <TextBlock Text="{Binding}" />
+                         </DataTemplate>
+                     </ComboBox.ItemTemplate>
+                 </ComboBox>
+                 <Label Width="200" Margin="0,5,0,0" FontWeight="Bold" Content="{Binding Path= UpdateProjectTask.InvalidMemberLabel, Mode=TwoWay}" Foreground="Red" HorizontalAlignment="Center" Name="InvalidUpdateMemberLabel"/>
+             </StackPanel>
+            
+            <Button Margin="0,15,0,0" Width="200" Content="Update Task" Command="{Binding UpdateTaskCommand}"></Button>
+        </StackPanel>
+        
+        <!-- Remove Task section -->
+         <StackPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+             
+             <TextBlock Text="Remove Task" Margin="0,0,0,20" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
+             
+             <StackPanel>
+                 <Label Content="Task to remove:" FontSize="14"/>
+                 <ComboBox x:Name="RemoveChoseTaskComboBox"
+                           IsEditable="True"
+                           StaysOpenOnEdit="True"
+                           IsTextSearchEnabled="True"
+                           TextSearch.TextPath=""
+                           ItemsSource="{Binding DeleteProjectTask.Tasks}"
+                           SelectedItem="{Binding DeleteProjectTask.SelectedTask}"
+                           Text="{Binding DeleteProjectTask.SearchTask, UpdateSourceTrigger=PropertyChanged}"
+                           Width="200">
+                     <ComboBox.ItemTemplate>
+                         <DataTemplate>
+                             <TextBlock Text="{Binding}" />
+                         </DataTemplate>
+                     </ComboBox.ItemTemplate>
+                 </ComboBox>
+                 <Label Width="200" Margin="0,5,0,0" FontWeight="Bold" Content="{Binding Path= DeleteProjectTask.InvalidTaskSelectLabel, Mode=TwoWay}" Foreground="Red" HorizontalAlignment="Center" Name="InvalidDeleteTaskSelectLabel"/>
+             </StackPanel>
+             
+            <Button Width="200" Content="Remove Task" Command="{Binding RemoveTaskCommand}"></Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

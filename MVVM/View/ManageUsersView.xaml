@@ -1,0 +1,130 @@
+﻿<UserControl x:Class="NavigationTutorial.MVVM.View.ManageUsersView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:NavigationTutorial.MVVM.View"
+             mc:Ignorable="d"
+             d:DesignHeight="1000" d:DesignWidth="1800"
+             Background="#DBE2EF">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <!-- Add User section -->
+        <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Add User" Margin="0,0,0,20" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <StackPanel>
+                <Label Content="First Name:" FontSize="14"/>
+                <TextBox Width="200" Margin="0,0,0,0" Text="{Binding Path=CreateProjectUser.FirstName, Mode=TwoWay}" Name="AddUserFirstNameTextBox"/>
+                <Label Width="200" Margin="0,5,0,0" FontWeight="Bold" Content="{Binding Path= CreateProjectUser.InvalidFirstNameLabel, Mode=TwoWay}" Foreground="Red" HorizontalAlignment="Center" Name="InvalidUserFirstNameLabel"/>
+            </StackPanel>
+            
+            <StackPanel>
+                <Label Content="Last Name:" FontSize="14"/>
+                <TextBox Width="200" Margin="0,0,0,0" Text="{Binding Path=CreateProjectUser.LastName, Mode=TwoWay}" Name="AddUserLastNameTextBox"/>
+                <Label Width="200" Margin="0,5,0,0" FontWeight="Bold" Content="{Binding Path= CreateProjectUser.InvalidLastNameLabel, Mode=TwoWay}" Foreground="Red" HorizontalAlignment="Center" Name="InvalidUserLastNameLabel"/>
+            </StackPanel>
+            
+            <StackPanel>
+                <Label Content="Email:" FontSize="14"/>
+                <TextBox Width="200" Margin="0,0,0,0" Text="{Binding Path=CreateProjectUser.Email, Mode=TwoWay}" Name="AddUserEmailTextBox"/>
+                <Label Width="200" Margin="0,5,0,0" FontWeight="Bold" Content="{Binding Path= CreateProjectUser.InvalidEmailLabel, Mode=TwoWay}" Foreground="Red" HorizontalAlignment="Center" Name="InvalidUserEmailLabel"/>
+            </StackPanel>
+            
+            <StackPanel>
+                <Label Content="Password:" FontSize="14"/>
+                <PasswordBox Width="200" Margin="0,0,0,0" PasswordChanged="RegisterViewPasswordBoxAddUser_PasswordChanged" Name="PasswordBox" Style="{StaticResource RoundPasswordBoxStyle}"/>
+                <Label Width="200" Margin="0,5,0,0" FontWeight="Bold" Content="{Binding Path= CreateProjectUser.InvalidPasswordLabel, Mode=TwoWay}" Foreground="Red" HorizontalAlignment="Center" Name="InvalidUserPasswordLabel"/>
+            </StackPanel>
+            
+            <Button Width="200" Content="Add User" Command="{Binding AddUserCommand}"></Button>
+        </StackPanel>
+        
+        <!-- Update User section -->
+         <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+             
+             <TextBlock Text="Update User" Margin="0,0,0,20" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
+             <StackPanel>
+                 <Label Content="User to update:" FontSize="14"/>
+                 <ComboBox x:Name="UpdateChoseUserComboBox"
+                           IsEditable="True"
+                           StaysOpenOnEdit="True"
+                           IsTextSearchEnabled="True"
+                           TextSearch.TextPath=""
+                           ItemsSource="{Binding UpdateProjectUser.Users}"
+                           SelectedItem="{Binding UpdateProjectUser.SelectedUser}"
+                           Width="200">
+                     <ComboBox.ItemTemplate>
+                         <DataTemplate>
+                             <TextBlock Text="{Binding}" />
+                         </DataTemplate>
+                     </ComboBox.ItemTemplate>
+                 </ComboBox>
+                 <Label Width="200" Margin="0,5,0,0" FontWeight="Bold" Content="{Binding Path= UpdateProjectUser.InvalidUserSelectLabel, Mode=TwoWay}" Foreground="Red" HorizontalAlignment="Center" Name="InvalidUserSelectUpdateLabel"/>
+             </StackPanel>
+             
+             <StackPanel>
+                 <Label Content="First Name:" FontSize="14"/>
+                 <TextBox Width="200" Margin="0,0,0,0" Text="{Binding Path=UpdateProjectUser.FirstName, Mode=TwoWay}" Name="UpdateUserFirstNameTextBox"/>
+                 <Label Width="200" Margin="0,5,0,0" FontWeight="Bold" Content="{Binding Path= UpdateProjectUser.InvalidUserFirstNameLabel, Mode=TwoWay}" Foreground="Red" HorizontalAlignment="Center" Name="InvalidUserFirstNameUpdateLabel"/>
+             </StackPanel>
+            
+             <StackPanel>
+                 <Label Content="Last Name:" FontSize="14"/>
+                 <TextBox Width="200" Margin="0,0,0,0" Text="{Binding Path=UpdateProjectUser.LastName, Mode=TwoWay}" Name="UpdateUserLastNameTextBox"/>
+                 <Label Width="200" Margin="0,5,0,0" FontWeight="Bold" Content="{Binding Path= UpdateProjectUser.InvalidUserLastNameLabel, Mode=TwoWay}" Foreground="Red" HorizontalAlignment="Center" Name="InvalidUserLastNameUpdateLabel"/>
+             </StackPanel>
+            
+             <StackPanel>
+                 <Label Content="Email:" FontSize="14"/>
+                 <TextBox Width="200" Margin="0,0,0,0" Text="{Binding Path=UpdateProjectUser.Email, Mode=TwoWay}" Name="UpdateUserEmailTextBox"/>
+                 <Label Width="200" Margin="0,5,0,0" FontWeight="Bold" Content="{Binding Path= UpdateProjectUser.InvalidEmailLabel, Mode=TwoWay}" Foreground="Red" HorizontalAlignment="Center" Name="InvalidUserEmailUpdateLabel"/>
+             </StackPanel>
+            
+             <StackPanel>
+                 <Label Content="Password:" FontSize="14"/>
+                 <PasswordBox Width="200" Margin="0,0,0,0" PasswordChanged="RegisterViewPasswordBoxUpdateUser_PasswordChanged" Name="PasswordBoxUpdate" Style="{StaticResource RoundPasswordBoxStyle}"/>
+                 <Label Width="200" Margin="0,5,0,0" FontWeight="Bold" Content="{Binding Path= UpdateProjectUser.InvalidPasswordLabel, Mode=TwoWay}" Foreground="Red" HorizontalAlignment="Center" Name="InvalidUserPasswordUpdateLabel"/>
+             </StackPanel>
+            
+             
+            
+            <Button Width="200" Content="Update User" Command="{Binding UpdateUserCommand}"></Button>
+        </StackPanel>
+        
+        <!-- Remove User section -->
+        <StackPanel Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+             
+            <TextBlock Text="Remove User" Margin="0,0,0,20" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
+             
+            <StackPanel>
+                <Label Content="User to remove:" FontSize="14"/>
+                <ComboBox x:Name="RemoveChoseUserComboBox"
+                          IsEditable="True"
+                          StaysOpenOnEdit="True"
+                          IsTextSearchEnabled="True"
+                          TextSearch.TextPath=""
+                          ItemsSource="{Binding DeleteProjectUser.Users}"
+                          SelectedItem="{Binding DeleteProjectUser.SelectedUser}"
+                          Text="{Binding DeleteProjectUsers.SearchUser, UpdateSourceTrigger=PropertyChanged}"
+                          Width="200">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <Label Width="200" Margin="0,5,0,0" FontWeight="Bold" Content="{Binding Path= DeleteProjectUser.InvalidUserSelectLabel, Mode=TwoWay}" Foreground="Red" HorizontalAlignment="Center" Name="InvalidUserSelectDeleteLabel"/>
+            </StackPanel>
+             
+            <Button Width="200" Content="Remove User" Command="{Binding DeleteUserCommand}"></Button>
+        </StackPanel>
+        
+        
+        
+    </Grid>
+</UserControl>

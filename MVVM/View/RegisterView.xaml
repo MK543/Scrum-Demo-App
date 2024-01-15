@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="NavigationTutorial.MVVM.View.RegisterView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:NavigationTutorial.MVVM.View"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="650" Background="#303040">
+   
+    <Border Background="#272537">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock FontFamily="Verdana" Foreground="Azure" Text="Register to Scrum App" Margin="0,0,0,20" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    
+                    <StackPanel Grid.Column="0">
+                        <Label  FontFamily="Verdana" Foreground="Azure" FontSize="13" Margin="0,0,0,5" Content="First Name:"  FontWeight="SemiBold" />
+                        <TextBox  FontFamily="Verdana" HorizontalAlignment="Center"  FontSize="14" Width="200"  Margin="-50,0,0,5" Text="{Binding Path=FirstName, Mode=TwoWay}" Name="FirstNameTextBox" Style="{StaticResource RoundTextBoxStyle}"/>
+                        <Label FontFamily="Segoe UI" FontSize="13" Content="{Binding Path=InvalidFirstNameLabel, Mode=TwoWay}" Width="250" Margin="0,10,0,0" FontWeight="Bold" Foreground="Red" HorizontalAlignment="Center" Name="InvalidFirstNameLabel"></Label>
+                    
+                        <Label  FontFamily="Verdana" Foreground="Azure" FontSize="13" Margin="0,0,0,5" Content="Last Name:" FontWeight="SemiBold" />
+                        <TextBox  FontFamily="Verdana" HorizontalAlignment="Center" FontSize="14" Width="200" Margin="-50,0,0,5" Text="{Binding Path=LastName, Mode=TwoWay}" Name="LastNameTextBox" Style="{StaticResource RoundTextBoxStyle}"/>
+                        <Label FontFamily="Segoe UI" FontSize="13" Content="{Binding Path=InvalidLastNameLabel, Mode=TwoWay}" Width="250" FontWeight="Bold" Foreground="Red" HorizontalAlignment="Center" Name="InvalidLastNameLabel"></Label>
+                    </StackPanel>
+                    
+                    <StackPanel Grid.Column="2">
+                        <Label  FontFamily="Verdana" Foreground="Azure" FontSize="13" Margin="0,0,0,5" Content="Email:"  FontWeight="SemiBold"/>
+                        <TextBox  FontFamily="Verdana" HorizontalAlignment="Center" FontSize="14" Width="200" Margin="-50,0,0,5" Text="{Binding Path=Email, Mode=TwoWay}" Name="EmailTextBox" Style="{StaticResource RoundTextBoxStyle}"/>
+                        <Label FontFamily="Segoe UI" FontSize="13" Content="{Binding Path=InvalidEmailLabel, Mode=TwoWay}" Width="250" Margin="0,10,0,0" FontWeight="Bold" Foreground="Red" HorizontalAlignment="Center" Name="InvalidEmailLabel"></Label>
+              
+                        <Label  FontFamily="Verdana" Content="Password:" FontSize="13" Margin="0,0,0,5" Foreground="Azure" FontWeight="SemiBold"/>
+                        <PasswordBox   FontFamily="Verdana" HorizontalAlignment="Center" FontSize="14" Width="200" Margin="-50,0,0,5" PasswordChanged="RegisterViewPasswordBox_PasswordChanged" Name="PasswordBox" Style="{StaticResource RoundPasswordBoxStyle}"/>
+                        <Label FontFamily="Segoe UI" FontSize="13" Content="{Binding Path=InvalidPasswordLabel, Mode=TwoWay}" Width="250" FontWeight="Bold" Foreground="Red" HorizontalAlignment="Center" Name="InvalidPasswordLabel"></Label>
+                    </StackPanel>
+                </Grid>
+                    <Button  FontFamily="Verdana" Content="Register" Width="150" FontSize="14" Command="{Binding Path=RegisterCommand}" Style="{StaticResource RoundButton}" FontWeight="Bold"/>
+            </StackPanel>
+    </Border>
+       
+    
+</UserControl>
